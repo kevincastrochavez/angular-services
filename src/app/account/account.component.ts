@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { stat } from "fs";
 import { AccountService } from "../account.service";
 
 import { LoggingService } from "../logging.service";
@@ -19,5 +20,6 @@ export class AccountComponent {
 
   onSetTo(status: string) {
     this.accountsService.updateStatus(this.id, status);
+    this.accountsService.statusUpdated.emit(status);
   }
 }
